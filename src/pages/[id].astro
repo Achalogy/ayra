@@ -1,7 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
 
-const id = "nosotros"
+export function getStaticPaths() {
+  return [
+    { params: { id: "nosotros" } },
+    { params: { id: "servicios" } },
+    { params: { id: "campus" } },
+    { params: { id: "educacion" } },
+  ];
+}
+
+const { id } = Astro.params;
 ---
 
 <Base>
@@ -26,7 +35,7 @@ const id = "nosotros"
       src="https://javeriana.edu.co/recursosdb/20125/8971784/header7-07
     </p>
     <div class="p-8 flex flex-col gap-4">
-      <p class="text-xl font-semibold">Bienvenido a Ayra</p>
+      <p class="text-xl font-semibold">Pagina {id}</p>
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque

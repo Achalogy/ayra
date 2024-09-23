@@ -12,24 +12,11 @@ const themeCookie = Astro.cookies.get("theme")?.value ?? "light";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title ?? "Achalogy"}</title>
-    <meta
-      name="description"
-      content={desc ??
-        ""}
-    />
+    <meta name="description" content={desc ?? ""} />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico?v=16" />
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Añadir Hack Font -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.3.0/web/hack.min.css"
-      integrity="sha512-XgCw4Srl8lC1ECwcaHwAU0WnxQwHkqmInzg9wJLtGB7DRuMaXPuK2k9WJ2AwRDGdrgK9eJpZl2hUlLi2WQssmw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    /> -->
 
     <meta name="theme-color" content="#ffffff" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -40,26 +27,17 @@ const themeCookie = Astro.cookies.get("theme")?.value ?? "light";
       <div
         class={`flex flex-col min-h-screen bg-white dark:bg-slate-900 dark:text-white`}
       >
-        <script is:inline>
-          function changeTheme() {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; theme=`);
-            const theme = parts.pop().split(";").shift();
-            const nTheme = theme == "dark" ? "light" : "dark";
-            document.cookie = `theme=${nTheme}; expires=${new Date(Date.now() + 10e9).toUTCString()}; path=/`;
-            window.location.reload();
-          }
-        </script>
-        <div
-          class="select-none p-4 flex justify-between px-[5%] bg-gradient-to-r dark:from-slate-800 dark:to-slate-800 from-purple-500 to-indigo-600 text-white"
-        >
-          <a class="font-semibold" href="/"
-            >Achalogy</a
-          >
-          <p onclick="changeTheme()" class="cursor-pointer">
-            {themeCookie == "dark" ? <IconSun /> : <IconMoon />}
-          </p>
-        </div>
+        <nav class="flex flex-col md:flex-row p-3 justify-between">
+          <h1>
+            <a href="/"> <b class="text-xl">Universidad Ayra</b></a>
+          </h1>
+          <div class="flex gap-3 items-center justify-center">
+            <a href="/nosotros">Nosotros</a>
+            <a href="/servicios">Servicios</a>
+            <a href="/campus">Campus</a>
+            <a href="/educacion" class="bg-indigo-400 rounded px-2 text-white">Estudia en Ayra</a>
+          </div>
+        </nav>
         <slot />
       </div>
 
